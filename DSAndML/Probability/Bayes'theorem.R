@@ -20,3 +20,20 @@ len <- length((posteriors))
 for (i in 1:len) {
     cat(sprintf("The posterior probability P(A%d|B) is %.4f\n", i, posteriors[i]))
 }
+
+
+# Chatgpt code
+# Define probabilities
+P_D <- 0.01           # Prior probability of having the disease
+P_T_given_D <- 0.90   # Probability of testing positive given having the disease
+P_T_given_Dc <- 0.05  # Probability of testing positive given not having the disease
+P_Dc <- 1 - P_D       # Probability of not having the disease
+
+# Calculate the marginal probability of testing positive
+P_T <- (P_T_given_D * P_D) + (P_T_given_Dc * P_Dc)
+
+# Calculate the posterior probability of having the disease given a positive test result
+P_D_given_T <- (P_T_given_D * P_D) / P_T
+
+# Print the result
+print(P_D_given_T)
