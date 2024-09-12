@@ -11,11 +11,11 @@ def expectedvalue(distribution):
 # Function to calculate variance
 def variance(distribution):
     Mean = expectedvalue(distribution)  # Get the mean (expected value)
-    var = 0
+    Var = 0
     for i in range(len(distribution)):
         X_squared = (i + 1) ** 2  # Square of the outcome (i + 1)
-        var += X_squared * distribution[i]  # Multiply by probability P(X)
-    return var - Mean ** 2  # Variance = E(X^2) - (E(X))^2
+        Var += X_squared * distribution[i]  # Multiply by probability P(X)
+    return Var - Mean ** 2  # Variance = E(X^2) - (E(X))^2
 
 # Define the distribution using fractions
 distribution = [fr(1, 36), fr(3, 36), fr(5, 36), fr(7, 36), fr(9, 36), fr(11, 36)]
@@ -32,7 +32,7 @@ print(f"Expected Value (Decimal): {float(expected_val)}")
 
 # Print the result in both fraction and decimal form
 print(f"Variance (Fraction): {var}")
-print(f"Variance (Decimal): {float(var)}")
+print(f"Variance (Decimal): {round(float(var),2)}")
 
 # Print the result in both fraction and decimal form
 print(f"Standard Deviation (Fraction): {sqrt(var)}")
