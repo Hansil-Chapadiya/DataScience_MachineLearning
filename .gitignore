@@ -1,6 +1,8 @@
 DSAndML/Include
 DSAndML/Lib
 DSAndML/Scripts
+DSAndML/etc
+DSAndML/share
 *.cfg
 DSAndML\Probability\tempCodeRunnerFile.R
 DSAndML\Probability\tempCodeRunnerFile.py
