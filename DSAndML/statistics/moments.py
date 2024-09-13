@@ -1,47 +1,58 @@
-# f = [5, 10, 15, 20, 25, 20, 15, 10, 5]
-f = [1, 8, 28, 56, 70, 56, 28, 8, 1]
-sum_fx = 0
-N = sum(f)
+# Frequency distribution
+f = [5, 10, 15, 20, 25, 20, 15, 10, 5]
+# f = [1, 8, 28, 56, 70, 56, 28, 8, 1]
 
-# find fx
+# Initialize variables
+sum_fx = 0  # To store the sum of f * x
+N = sum(f)  # Total frequency N
+
+# Step 1: Calculate the sum of f * x (for mean calculation)
 for x in range(len(f)):
-    sum_fx += f[x] * x
+    sum_fx += f[x] * x  # f[x] * x for each value
 
-# calclate mean
-mean_ = sum_fx / N
+# Step 2: Calculate the mean
+mean_ = sum_fx / N  # Mean is sum(f * x) / N
 
-# calculate f(x-mean)
+# Initialize variables for higher moments calculations
 sum_f_into_x_sub_mean = 0
 sum_f_into_x_sub_mean_raise_2 = 0
 sum_f_into_x_sub_mean_raise_3 = 0
 sum_f_into_x_sub_mean_raise_4 = 0
+
+# Step 3: Calculate summation of f(x - mean), (x - mean)^2, (x - mean)^3, (x - mean)^4
 for x in range(len(f)):
-    sum_f_into_x_sub_mean += f[x] * (x - mean_)
-    sum_f_into_x_sub_mean_raise_2 += (f[x] * ((x - mean_)**2))
-    sum_f_into_x_sub_mean_raise_3 += (f[x] * ((x - mean_)**3))
-    sum_f_into_x_sub_mean_raise_4 += (f[x] * ((x - mean_)**4))
+    deviation = x - mean_  # Calculate (x - mean) for each value of x
+    sum_f_into_x_sub_mean += f[x] * deviation  # Summation of f(x - mean)
+    sum_f_into_x_sub_mean_raise_2 += f[x] * (deviation**2)  # Summation of f(x - mean)^2
+    sum_f_into_x_sub_mean_raise_3 += f[x] * (deviation**3)  # Summation of f(x - mean)^3
+    sum_f_into_x_sub_mean_raise_4 += f[x] * (deviation**4)  # Summation of f(x - mean)^4
 
+# Print the intermediate results
+print("N = ", N)
+print("Summation of fx = ", sum_fx)
+print("Summation of f(x - mean) = ", sum_f_into_x_sub_mean)
+print("Summation of f(x - mean)^2 = ", sum_f_into_x_sub_mean_raise_2)
+print("Summation of f(x - mean)^3 = ", sum_f_into_x_sub_mean_raise_3)
+print("Summation of f(x - mean)^4 = ", sum_f_into_x_sub_mean_raise_4)
 
-# print(N, sum_f_into_x_sub_mean, sum_fx, mean_)
+# Step 4: Calculate moments about the actual mean
+m1 = sum_f_into_x_sub_mean / N  # First moment (about the mean, m1 should be close to 0)
+m2 = sum_f_into_x_sub_mean_raise_2 / N  # Second moment (variance)
+m3 = sum_f_into_x_sub_mean_raise_3 / N  # Third moment (skewness related)
+m4 = sum_f_into_x_sub_mean_raise_4 / N  # Fourth moment (kurtosis related)
 
-print('N = ', N)
-print('summation of fx = ', sum_fx)
-print('summation of f(x-mean) = ', sum_f_into_x_sub_mean)
-print('summation of f(x-mean)^2 = ', sum_f_into_x_sub_mean_raise_2)
-print('summation of f(x-mean)^3 = ', sum_f_into_x_sub_mean_raise_3)
-print('summation of f(x-mean)^4 = ', sum_f_into_x_sub_mean_raise_4)
+# Print moments
+print("Moments about Actual Mean:")
+print("m1 = ", m1)  # Should be close to 0, as it's the first moment about the mean
+print("m2 = ", m2)  # Second moment (variance)
+print("m3 = ", m3)  # Third moment (for skewness)
+print("m4 = ", m4)  # Fourth moment (for kurtosis)
 
-print('Moments about Actual Mean:')
-m1 =  sum_f_into_x_sub_mean/N
-m2 =  sum_f_into_x_sub_mean_raise_2/N
-m3 =  sum_f_into_x_sub_mean_raise_3/N
-m4 =  sum_f_into_x_sub_mean_raise_4/N
+# Step 5: Calculate skewness and kurtosis
+skewness = m3 / (m2 ** (3 / 2))  # Skewness is m3 divided by m2 raised to 3/2
+kurtosis = m4 / (m2**2)  # Kurtosis is m4 divided by m2 squared
 
+# Print skewness and kurtosis
+print("Skewness = ", skewness)
+print("Kurtosis = ", kurtosis)
 
-print('m1 = ', m1)
-print('m2 = ', m2)
-print('m3 = ', m3)
-print('m4 = ', m4)
-
-print('skewness = ', (m3 ** 2)/(m2 ** 3))
-print('kurtosis = ', (m4)/(m2 ** 2))
