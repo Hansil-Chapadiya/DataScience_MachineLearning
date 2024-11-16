@@ -28,6 +28,8 @@ def f():
         result = combination * (p**x) * (q ** (n - x))  # Binomial probability
 
         # Display the result in both fraction and decimal forms
+        print(f"Mean = {n * p}")
+        print(f"Variance = {n * p * q}")
         print(f"Binomial probability as a fraction: {result}")
         print(f"Binomial probability as a decimal: {float(result)}")
 
