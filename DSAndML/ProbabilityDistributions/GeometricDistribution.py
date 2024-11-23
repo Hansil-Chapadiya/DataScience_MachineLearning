@@ -14,6 +14,15 @@ def geometric_pmf():
         if p <= 0 or p > 1:
             raise ValueError("The probability p must be in the range (0, 1].")
 
+        mean = 1.0 / p
+        standard_deviation = (1.0 - p) / p**2
+
+        # print Mean
+        print(f"Mean = {mean}")
+
+        # print S.D
+        print(f"Standard_deviation = {standard_deviation}")
+
         # Calculate the probability of failure
         q = 1 - p
 
