@@ -3,6 +3,7 @@ DSAndML/Lib
 DSAndML/Scripts
 DSAndML/etc
 DSAndML/share
+DSAndML/.ipynb_chekpoints
 *.cfg
 DSAndML\Probability\tempCodeRunnerFile.R
 DSAndML\Probability\tempCodeRunnerFile.py
